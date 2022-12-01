@@ -1,7 +1,8 @@
 @import '../../styles/custom.scss';
 
-span.seat {
-  padding: 0.2rem 0.5rem;
+.tier-info {
+  width: 20px;
+  height: 20px;
   margin: 0.3rem;
   border-radius: 0.4rem;
   &.tier1 {
@@ -13,8 +14,9 @@ span.seat {
   &.tier3 {
     background-color: $dark;
   }
-  &.booked-true {
-    background-color: rgb(235, 235, 235);
-    color: rgb(204, 204, 204);
-  }
+}
+
+p {
+  transform: translate(0px, 3px);
+  margin-right: 10px;
 }

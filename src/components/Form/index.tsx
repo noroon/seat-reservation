@@ -13,7 +13,7 @@ const Form = () => {
   return (
     <form noValidate onSubmit={handleSubmit} className="w-75 mt-5 d-flex flex-column align-items-center">
       <div className="form-group d-flex flex-column align-items-center mb-4">
-        <label htmlFor="numberOfSeats" className='mb-2'>Number of adjacent seats</label>
+        <label htmlFor="numberOfSeats" className='mb-2'>Search for adjacent seats:</label>
         <input
           type="number"
           max="4"
@@ -27,7 +27,7 @@ const Form = () => {
         </small>
       </div>
       <button type="submit" className="btn btn-primary">
-        Search for adjacent seats
+        Search
       </button>
     </form>
   );
