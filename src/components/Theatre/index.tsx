@@ -12,7 +12,7 @@ const Theatre = () => {
   const sections = getSections(seats);
 
   return (
-    <div className="container d-flex flex-column align-items-center me-4">
+    <div className="container d-flex flex-column align-items-center me-4 pt-4 pb-4">
       {(Object as any)
         .entries(sections)
         .map(

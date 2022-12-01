@@ -20,7 +20,13 @@ code {
 
 button.btn {
   color: white;
+  font-weight: 500;
+  letter-spacing: 0.02rem;
   &:hover {
     color: white;
   }
+}
+
+.container {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
