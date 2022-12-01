@@ -34,8 +34,48 @@ export function getReservedSeats() {
   return reservedAndFreeSeats;
 }
 
+function getSeatMap(seats: Seat[]) {
+  const sections = getSections(seats);
+  const seatMap: Array<Seat[]> = [];
+
+  (Object as any)
+    .entries(sections)
+    .map(([sectionName, section]: [keyof typeof sections, Seat[]]) => {
+      const rowNames = [...new Set(section.map((obj: Seat) => obj['row']))];
+      rowNames.forEach((rowName) => {
+        seatMap.push(
+          seats.filter(
+            ({ section, row }) => section === sectionName && row === rowName,
+          ),
+        );
+      });
+    });
+
+  return seatMap;
+}
+
 export function bookSeats(seats: Seat[], seatNumber: number) {
-  return seats;
+  const seatMap = getSeatMap(seats);
+
+  let bestSeatInARow: Seat[] = [];
+
+  seatMap.map((row) => {
+    const startPoint = Math.floor((row.length - seatNumber) / 2);
+    let x = startPoint;
+    for (let i = 0; i < row.length; i++) {
+      x += i % 2 === 1 ? i : -i;
+
+      if (!row[x].booked) {
+        bestSeatInARow.push(row[x]);
+        break;
+      }
+    }
+    return;
+  });
+
+  console.log(bestSeatInARow);
+
+  return;
 }
 
 export function getSections(seats: Seat[]) {

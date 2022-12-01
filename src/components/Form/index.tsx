@@ -10,10 +10,8 @@ const Form = () => {
 
     const data = new FormData(event.currentTarget);
     const seatNumber = Number(data.get('seatNumber'));    
-    console.log(seatNumber);
     
     bookSeats(seats, seatNumber)
-    return;
   };
 
   return (
