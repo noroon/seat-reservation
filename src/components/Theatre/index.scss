@@ -1,0 +1,16 @@
+@import '../../styles/custom.scss';
+
+span.seat {
+  padding: 0.2rem 0.5rem;
+  margin: 0.3rem;
+  border-radius: .4rem;
+  &.tier1 {
+    background-color: $light;
+  }
+  &.tier2 {
+    background-color: $secondary;
+  }
+  &.tier3 {
+    background-color: $dark;
+  }
+}

@@ -37,3 +37,17 @@ export function getReservedSeats() {
 export function bookSeats(seats: Seat[]) {
   return seats;
 }
+
+export function getSections(seats: Seat[]) {
+  const sectionNames = [...new Set(seatData.map((obj) => obj['section']))];
+  const sections: Record<string, any> = {};
+
+  sectionNames.forEach((sectionName) => {
+    sections[sectionName as keyof typeof sections] = seats.filter((seat) => {
+      return seat.section === sectionName;
+    });
+  });
+  console.log(sections);
+
+  return sections;
+}
