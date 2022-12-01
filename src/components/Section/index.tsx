@@ -12,7 +12,12 @@ const Section = ({
     <div className="d-flex flex-column align-items-center mb-4">
       <h5 className="mb-3">{sectionName}</h5>
       {[...new Set(section.map((obj: Seat) => obj['row']))].map((row) => (
-        <Row row={String(row)} section={section} />
+        <Row
+          row={String(row)}
+          section={section}
+          sectionName={sectionName}
+          key={`${sectionName}-${row}`}
+        />
       ))}
     </div>
   );

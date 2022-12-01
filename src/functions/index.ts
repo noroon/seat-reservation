@@ -34,7 +34,7 @@ export function getReservedSeats() {
   return reservedAndFreeSeats;
 }
 
-export function bookSeats(seats: Seat[]) {
+export function bookSeats(seats: Seat[], seatNumber: number) {
   return seats;
 }
 
@@ -47,7 +47,6 @@ export function getSections(seats: Seat[]) {
       return seat.section === sectionName;
     });
   });
-  console.log(sections);
 
   return sections;
 }

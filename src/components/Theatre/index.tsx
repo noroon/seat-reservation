@@ -20,7 +20,7 @@ const Theatre = () => {
             keyof typeof sections,
             Record<string, any>,
           ]) => (
-            <Section sectionName={sectionName} section={section} />
+            <Section sectionName={sectionName} section={section} key={sectionName}/>
           ),
         )}
       <TierInfo />

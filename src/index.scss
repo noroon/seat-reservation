@@ -1,5 +1,9 @@
 @import './styles/custom.scss';
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -14,10 +18,6 @@ code {
     monospace;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 button.btn {
   color: white;
   font-weight: 500;
@@ -25,6 +25,10 @@ button.btn {
   &:hover {
     color: white;
   }
+}
+
+.app.container {
+  max-width: 800px;
 }
 
 .container {

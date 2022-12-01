@@ -1,12 +1,18 @@
-import { useContext } from 'react';
+import { FormEvent, useContext } from 'react';
 import { SeatContext } from '../../context/seatContext';
 import { bookSeats } from '../../functions';
 
 const Form = () => {
   const { seats } = useContext(SeatContext);
 
-  const handleSubmit = () => {
-    bookSeats(seats)
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const data = new FormData(event.currentTarget);
+    const seatNumber = Number(data.get('seatNumber'));    
+    console.log(seatNumber);
+    
+    bookSeats(seats, seatNumber)
     return;
   };
 
@@ -16,6 +22,7 @@ const Form = () => {
         <label htmlFor="numberOfSeats" className='mb-2'>Search for adjacent seats:</label>
         <input
           type="number"
+          name="seatNumber"
           max="4"
           min="1"
           defaultValue={1}
