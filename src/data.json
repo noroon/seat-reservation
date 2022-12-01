@@ -1,0 +1,289 @@
+[
+  {
+    "section": "Auditorium",
+    "row": "A",
+    "seatNumber": 1,
+    "tier": 1,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "A",
+    "seatNumber": 2,
+    "tier": 1,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "A",
+    "seatNumber": 3,
+    "tier": 1,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "A",
+    "seatNumber": 4,
+    "tier": 1,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "A",
+    "seatNumber": 5,
+    "tier": 1,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "A",
+    "seatNumber": 6,
+    "tier": 1,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "B",
+    "seatNumber": 1,
+    "tier": 2,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "B",
+    "seatNumber": 2,
+    "tier": 1,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "B",
+    "seatNumber": 3,
+    "tier": 1,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "B",
+    "seatNumber": 4,
+    "tier": 1,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "B",
+    "seatNumber": 5,
+    "tier": 1,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "B",
+    "seatNumber": 6,
+    "tier": 1,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "B",
+    "seatNumber": 7,
+    "tier": 2,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "C",
+    "seatNumber": 1,
+    "tier": 2,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "C",
+    "seatNumber": 2,
+    "tier": 2,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "C",
+    "seatNumber": 3,
+    "tier": 1,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "C",
+    "seatNumber": 4,
+    "tier": 1,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "C",
+    "seatNumber": 5,
+    "tier": 2,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "C",
+    "seatNumber": 6,
+    "tier": 2,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "D",
+    "seatNumber": 1,
+    "tier": 3,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "D",
+    "seatNumber": 2,
+    "tier": 2,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "D",
+    "seatNumber": 3,
+    "tier": 2,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "D",
+    "seatNumber": 4,
+    "tier": 2,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "D",
+    "seatNumber": 5,
+    "tier": 3,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "E",
+    "seatNumber": 1,
+    "tier": 3,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "E",
+    "seatNumber": 2,
+    "tier": 3,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "E",
+    "seatNumber": 3,
+    "tier": 3,
+    "booked": false
+  },
+  {
+    "section": "Auditorium",
+    "row": "E",
+    "seatNumber": 4,
+    "tier": 3,
+    "booked": false
+  },
+  {
+    "section": "Balcony",
+    "row": "A",
+    "seatNumber": 1,
+    "tier": 2,
+    "booked": false
+  },
+  {
+    "section": "Balcony",
+    "row": "A",
+    "seatNumber": 2,
+    "tier": 2,
+    "booked": false
+  },
+  {
+    "section": "Balcony",
+    "row": "A",
+    "seatNumber": 3,
+    "tier": 1,
+    "booked": false
+  },
+  {
+    "section": "Balcony",
+    "row": "A",
+    "seatNumber": 4,
+    "tier": 1,
+    "booked": false
+  },
+  {
+    "section": "Balcony",
+    "row": "A",
+    "seatNumber": 5,
+    "tier": 1,
+    "booked": false
+  },
+  {
+    "section": "Balcony",
+    "row": "A",
+    "seatNumber": 6,
+    "tier": 2,
+    "booked": false
+  },
+  {
+    "section": "Balcony",
+    "row": "A",
+    "seatNumber": 7,
+    "tier": 2,
+    "booked": false
+  },
+  {
+    "section": "Balcony",
+    "row": "B",
+    "seatNumber": 1,
+    "tier": 3,
+    "booked": false
+  },
+  {
+    "section": "Balcony",
+    "row": "B",
+    "seatNumber": 2,
+    "tier": 2,
+    "booked": false
+  },
+  {
+    "section": "Balcony",
+    "row": "B",
+    "seatNumber": 3,
+    "tier": 2,
+    "booked": false
+  },
+  {
+    "section": "Balcony",
+    "row": "B",
+    "seatNumber": 4,
+    "tier": 2,
+    "booked": false
+  },
+  {
+    "section": "Balcony",
+    "row": "B",
+    "seatNumber": 5,
+    "tier": 2,
+    "booked": false
+  },
+  {
+    "section": "Balcony",
+    "row": "B",
+    "seatNumber": 6,
+    "tier": 3,
+    "booked": false
+  }
+]
