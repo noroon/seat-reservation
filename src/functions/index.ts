@@ -149,14 +149,15 @@ export function getBestSeats(seats: Seat[], seatNumber: number) {
       bestSeats = row;
       return;
     }
-    const sum = row.reduce((accumulator, object) => {
+
+    const sumOfTiersInRow = row.reduce((accumulator, object) => {
       return accumulator + object.tier;
     }, 0);
-    const sum2 = bestSeats.reduce((accumulator, object) => {
+    const sumOfTiersInBestSeatArray = bestSeats.reduce((accumulator, object) => {
       return accumulator + object.tier;
     }, 0);
 
-    if (sum < sum2) {
+    if (sumOfTiersInRow < sumOfTiersInBestSeatArray) {
       bestSeats = row;
     }
   });

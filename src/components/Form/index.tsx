@@ -5,7 +5,8 @@ import { useState } from 'react';
 
 const Form = () => {
   const { seats } = useContext(SeatContext);
-  const [bestSeats, setBestSeats] = useState<Seat[]>();
+  const [bestSeats, setBestSeats] = useState<Seat[]>([]);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -13,12 +14,23 @@ const Form = () => {
     const data = new FormData(event.currentTarget);
     const seatNumber = Number(data.get('seatNumber'));
 
-    setBestSeats(getBestSeats(seats, seatNumber));
+    const bestSeats = getBestSeats(seats, seatNumber);
+    setBestSeats(bestSeats);
+
+    if (bestSeats.length > 0) {
+      setErrorMessage('');
+    } else {
+      setErrorMessage("We didn't find any seats matching your search.");
+    }
   };
 
   return (
     <span className="w-75 d-flex flex-column align-items-center">
-      <form noValidate onSubmit={handleSubmit} className="w-75 mt-5 d-flex flex-column align-items-center">
+      <form
+        noValidate
+        onSubmit={handleSubmit}
+        className="w-75 mt-5 d-flex flex-column align-items-center"
+      >
         <div className="form-group d-flex flex-column align-items-center mb-4">
           <label htmlFor="numberOfSeats" className="mb-2">
             Search for adjacent seats:
@@ -40,7 +52,23 @@ const Form = () => {
           Search
         </button>
       </form>
-      {bestSeats && <span>{JSON.stringify(bestSeats)}</span>}
+      {bestSeats.length > 0 && (
+        <>
+          <h6 className="mt-5">We've found these seats for you:</h6>
+          {bestSeats.map(({ section, row, seatNumber }) => {
+            return (
+              <div key={`${section}-${row}${seatNumber}`}>
+                <span>{`${section} ${row}${seatNumber}`}</span>
+              </div>
+            );
+          })}
+        </>
+      )}
+      {errorMessage && (
+        <div className="alert alert-warning text-center" role="alert">
+          {errorMessage}
+        </div>
+      )}
     </span>
   );
 };
