@@ -80,13 +80,63 @@ function getAllOptionsInEveryRow(seats: Seat[], seatNumber: number) {
   return allOptionsInEveryRow;
 }
 
-function getBestSeatsInEveryRow(seats: Seat[], seatNumber: number) {
-  const allOptionsInEveryRow = getAllOptionsInEveryRow(seats, seatNumber);
-  console.log(allOptionsInEveryRow);
-  
+function getRowLengthObject(seats: Seat[]) {
+  const sections = getSections(seats);
+  const rowLengthObject: any = {};
+
+  (Object as any)
+    .entries(sections)
+    .map(
+      ([sectionName, section]: [
+        keyof typeof sections,
+        Record<string, any>,
+      ]) => {
+        rowLengthObject[sectionName] = {};
+        const rowNames = [
+          ...new Set(section.map((obj: Seat) => obj['row'])),
+        ].map((row) => row);
+        rowNames.forEach((rowName: any) => {
+          rowLengthObject[sectionName][rowName] = [
+            ...section.filter((obj: Seat) => obj['row'] === rowName),
+          ].length;
+        });
+      },
+    );
+
+  return rowLengthObject;
 }
 
+function getBestSeatsInEveryRow(seats: Seat[], seatNumber: number) {
+  const rowLengthObject = getRowLengthObject(seats);
+  const allOptionsInEveryRow = getAllOptionsInEveryRow(seats, seatNumber);
 
+  const bestSeatsInEveryRow: Array<Seat[]> = [];
+
+  allOptionsInEveryRow.forEach((row) => {
+    const section = row[0][0].section;
+    const rowName = row[0][0].row;
+    const rowLength = rowLengthObject[section][rowName];
+
+    const startPoint = Math.floor((rowLength - seatNumber) / 2);
+
+    let bestSeatsInARow: Seat[] = [];
+    let index = startPoint;
+
+    for (let i = 0; i < rowLength; i++) {
+      const bestOption = row.filter((option) => option[0].seatNumber === index);
+
+      if (bestOption.length > 0) {
+        bestSeatsInARow = bestOption[0];
+        break;
+      }
+
+      index += i % 2 === 1 ? i : -i;
+    }
+    bestSeatsInEveryRow.push(bestSeatsInARow);
+  });
+
+  return bestSeatsInEveryRow;
+}
 
 export function bookSeats(seats: Seat[], seatNumber: number) {
   const bestSeatsInEveryRow = getBestSeatsInEveryRow(seats, seatNumber);
