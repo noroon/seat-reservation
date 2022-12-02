@@ -40,7 +40,7 @@ function getSeatMap(seats: Seat[]) {
 
   (Object as any)
     .entries(sections)
-    .map(([sectionName, section]: [keyof typeof sections, Seat[]]) => {
+    .forEach(([sectionName, section]: [keyof typeof sections, Seat[]]) => {
       const rowNames = [...new Set(section.map((obj: Seat) => obj['row']))];
       rowNames.forEach((rowName) => {
         seatMap.push(
@@ -54,28 +54,43 @@ function getSeatMap(seats: Seat[]) {
   return seatMap;
 }
 
-export function bookSeats(seats: Seat[], seatNumber: number) {
+function getAllOptionsInEveryRow(seats: Seat[], seatNumber: number) {
   const seatMap = getSeatMap(seats);
 
-  let bestSeatInARow: Seat[] = [];
+  const allOptionsInEveryRow: Array<Array<Seat[]>> = [];
 
-  seatMap.map((row) => {
-    const startPoint = Math.floor((row.length - seatNumber) / 2);
-    let x = startPoint;
-    for (let i = 0; i < row.length; i++) {
-      x += i % 2 === 1 ? i : -i;
+  seatMap.forEach((row) => {
+    const allOptionsInARow = [];
 
-      if (!row[x].booked) {
-        bestSeatInARow.push(row[x]);
-        break;
+    for (let j = 0; j <= row.length - seatNumber; j++) {
+      const arr2 = [];
+      for (let k = 0; k < seatNumber; k++) {
+        arr2.push(row[j + k]);
+      }
+      if (arr2.filter((obj) => obj.booked === true).length === 0) {
+        allOptionsInARow.push(arr2);
       }
     }
-    return;
+
+    if (allOptionsInARow.length > 0) {
+      allOptionsInEveryRow.push(allOptionsInARow);
+    }
   });
 
-  console.log(bestSeatInARow);
+  return allOptionsInEveryRow;
+}
 
-  return;
+function getBestSeatsInEveryRow(seats: Seat[], seatNumber: number) {
+  const allOptionsInEveryRow = getAllOptionsInEveryRow(seats, seatNumber);
+  console.log(allOptionsInEveryRow);
+  
+}
+
+
+
+export function bookSeats(seats: Seat[], seatNumber: number) {
+  const bestSeatsInEveryRow = getBestSeatsInEveryRow(seats, seatNumber);
+  console.log(bestSeatsInEveryRow);
 }
 
 export function getSections(seats: Seat[]) {
