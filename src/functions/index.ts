@@ -123,7 +123,9 @@ function getBestSeatsInEveryRow(seats: Seat[], seatNumber: number) {
     let index = startPoint;
 
     for (let i = 0; i < rowLength; i++) {
-      const bestOption = row.filter((option) => option[0].seatNumber === index);
+      const bestOption = row.filter(
+        (option) => option[0].seatNumber === index + 1,
+      );
 
       if (bestOption.length > 0) {
         bestSeatsInARow = bestOption[0];
@@ -138,9 +140,28 @@ function getBestSeatsInEveryRow(seats: Seat[], seatNumber: number) {
   return bestSeatsInEveryRow;
 }
 
-export function bookSeats(seats: Seat[], seatNumber: number) {
+export function getBestSeats(seats: Seat[], seatNumber: number) {
   const bestSeatsInEveryRow = getBestSeatsInEveryRow(seats, seatNumber);
-  console.log(bestSeatsInEveryRow);
+
+  let bestSeats: Seat[] = [];
+  bestSeatsInEveryRow.forEach((row) => {
+    if (bestSeats.length === 0) {
+      bestSeats = row;
+      return;
+    }
+    const sum = row.reduce((accumulator, object) => {
+      return accumulator + object.tier;
+    }, 0);
+    const sum2 = bestSeats.reduce((accumulator, object) => {
+      return accumulator + object.tier;
+    }, 0);
+
+    if (sum < sum2) {
+      bestSeats = row;
+    }
+  });
+
+  return bestSeats;
 }
 
 export function getSections(seats: Seat[]) {
