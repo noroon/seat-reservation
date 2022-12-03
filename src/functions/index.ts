@@ -82,22 +82,20 @@ function getAllOptionsInEveryRow(seats: Seat[], seatNumber: number) {
 
 function getRowLengthObject(seats: Seat[]) {
   const sections = getSections(seats);
-  const rowLengthObject: any = {};
+  const rowLengthObject: Record<string, Record<string, number>> = {};
 
   (Object as any)
     .entries(sections)
-    .map(
+    .forEach(
       ([sectionName, section]: [
         keyof typeof sections,
         Record<string, any>,
       ]) => {
         rowLengthObject[sectionName] = {};
-        const rowNames = [
-          ...new Set(section.map((obj: Seat) => obj['row'])),
-        ].map((row) => row);
-        rowNames.forEach((rowName: any) => {
-          rowLengthObject[sectionName][rowName] = [
-            ...section.filter((obj: Seat) => obj['row'] === rowName),
+        const rowNames = [...new Set(section.map((obj: Seat) => obj.row))];
+        rowNames.forEach((rowName) => {
+          rowLengthObject[sectionName][rowName as keyof typeof sections] = [
+            ...section.filter((obj: Seat) => obj.row === rowName),
           ].length;
         });
       },
@@ -153,9 +151,12 @@ export function getBestSeats(seats: Seat[], seatNumber: number) {
     const sumOfTiersInRow = row.reduce((accumulator, object) => {
       return accumulator + object.tier;
     }, 0);
-    const sumOfTiersInBestSeatArray = bestSeats.reduce((accumulator, object) => {
-      return accumulator + object.tier;
-    }, 0);
+    const sumOfTiersInBestSeatArray = bestSeats.reduce(
+      (accumulator, object) => {
+        return accumulator + object.tier;
+      },
+      0,
+    );
 
     if (sumOfTiersInRow < sumOfTiersInBestSeatArray) {
       bestSeats = row;
@@ -166,8 +167,8 @@ export function getBestSeats(seats: Seat[], seatNumber: number) {
 }
 
 export function getSections(seats: Seat[]) {
-  const sectionNames = [...new Set(seatData.map((obj) => obj['section']))];
-  const sections: Record<string, any> = {};
+  const sectionNames = [...new Set(seatData.map((obj) => obj.section))];
+  const sections: Record<string, Seat[]> = {};
 
   sectionNames.forEach((sectionName) => {
     sections[sectionName as keyof typeof sections] = seats.filter((seat) => {
