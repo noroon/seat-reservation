@@ -157,7 +157,6 @@ function getBestSeatsInEveryRow(seats: Seat[], seatNumber: number) {
 
 export function getBestSeats(seats: Seat[], seatNumber: number) {
   const bestSeatsInEveryRow = getBestSeatsInEveryRow(seats, seatNumber);
-console.log(bestSeatsInEveryRow);
 
   let bestSeats: Seat[] = [];
   bestSeatsInEveryRow.forEach((row) => {
