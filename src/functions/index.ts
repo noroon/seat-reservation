@@ -14,6 +14,23 @@ function getRandomSeats() {
   return shuffled.slice(0, getRandomNumber());
 }
 
+export function getRowNamesArray(section: Record<string, any>) {
+  return new Set(section.map((obj: Seat) => obj.row));
+}
+
+export function getSections(seats: Seat[]) {
+  const sectionNames = [...new Set(seatData.map((obj) => obj.section))];
+  const sections: Record<string, Seat[]> = {};
+
+  sectionNames.forEach((sectionName) => {
+    sections[sectionName as keyof typeof sections] = seats.filter((seat) => {
+      return seat.section === sectionName;
+    });
+  });
+
+  return sections;
+}
+
 export function getReservedSeats() {
   const reservedSeats = [...getRandomSeats()];
 
@@ -41,7 +58,7 @@ function getSeatMap(seats: Seat[]) {
   (Object as any)
     .entries(sections)
     .forEach(([sectionName, section]: [keyof typeof sections, Seat[]]) => {
-      const rowNames = [...new Set(section.map((obj: Seat) => obj['row']))];
+      const rowNames = [...getRowNamesArray(section)];
       rowNames.forEach((rowName) => {
         seatMap.push(
           seats.filter(
@@ -120,7 +137,7 @@ function getBestSeatsInEveryRow(seats: Seat[], seatNumber: number) {
     let bestSeatsInARow: Seat[] = [];
     let index = startPoint;
 
-    for (let i = 0; i < rowLength; i++) {
+    for (let i = 0; i <= rowLength; i++) {
       const bestOption = row.filter(
         (option) => option[0].seatNumber === index + 1,
       );
@@ -140,6 +157,7 @@ function getBestSeatsInEveryRow(seats: Seat[], seatNumber: number) {
 
 export function getBestSeats(seats: Seat[], seatNumber: number) {
   const bestSeatsInEveryRow = getBestSeatsInEveryRow(seats, seatNumber);
+console.log(bestSeatsInEveryRow);
 
   let bestSeats: Seat[] = [];
   bestSeatsInEveryRow.forEach((row) => {
@@ -164,17 +182,4 @@ export function getBestSeats(seats: Seat[], seatNumber: number) {
   });
 
   return bestSeats;
-}
-
-export function getSections(seats: Seat[]) {
-  const sectionNames = [...new Set(seatData.map((obj) => obj.section))];
-  const sections: Record<string, Seat[]> = {};
-
-  sectionNames.forEach((sectionName) => {
-    sections[sectionName as keyof typeof sections] = seats.filter((seat) => {
-      return seat.section === sectionName;
-    });
-  });
-
-  return sections;
 }

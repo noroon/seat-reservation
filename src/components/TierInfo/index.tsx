@@ -7,7 +7,7 @@ const TierInfo = () => {
 
   return (
     <div className="d-flex mb-3">
-      {[...new Set(seats.map((obj: Seat) => obj['tier']))].map((tier) => (
+      {[...new Set(seats.map((obj: Seat) => obj.tier))].map((tier) => (
         <Fragment key={`tier-0${tier}`}>
           <span className={`tier-info tier${tier}`}></span>
           <p>Tier {tier}</p>

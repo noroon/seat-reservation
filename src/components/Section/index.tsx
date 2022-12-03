@@ -1,5 +1,5 @@
-import { Seat } from '../../context/seatContext';
 import Row from '../Row';
+import { getRowNamesArray } from '../../functions';
 
 const Section = ({
   sectionName,
@@ -11,7 +11,7 @@ const Section = ({
   return (
     <div className="d-flex flex-column align-items-center mb-4">
       <h5 className="mb-3">{sectionName}</h5>
-      {[...new Set(section.map((obj: Seat) => obj['row']))].map((row) => (
+      {[...getRowNamesArray(section)].map((row) => (
         <Row
           row={String(row)}
           section={section}
