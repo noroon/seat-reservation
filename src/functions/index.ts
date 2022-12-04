@@ -137,7 +137,9 @@ function getBestSeatsInEveryRow(seats: Seat[], seatNumber: number) {
     let bestSeatsInARow: Seat[] = [];
     let index = startPoint;
 
-    for (let i = 0; i <= rowLength; i++) {
+    for (let i = 0; i < rowLength; i++) {
+      index += i % 2 === 1 ? i : -i;
+
       const bestOption = row.filter(
         (option) => option[0].seatNumber === index + 1,
       );
@@ -147,7 +149,6 @@ function getBestSeatsInEveryRow(seats: Seat[], seatNumber: number) {
         break;
       }
 
-      index += i % 2 === 1 ? i : -i;
     }
     bestSeatsInEveryRow.push(bestSeatsInARow);
   });
